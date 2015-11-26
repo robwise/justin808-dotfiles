@@ -1,14 +1,19 @@
 export PUB_DOTFILES=$HOME/CloudStation/dotfiles/justin808-dotfiles/zsh
-export PRIV_DOTFILES=$HOME/CloudStation/dotfiles/private-dotfiles/zsh
+export PRIV_DOTFILES=$HOME/CloudStation/dotfiles/private-dotfiles
+export SCRIPTS=$HOME/CloudStation/dotfiles/justin808-dotfiles/scripts
+export ZSH_CUSTOM=$PUB_DOTFILES/zsh/oh-my-zsh-custom
+export ZSH=$HOME/.oh-my-zsh
+export EDITOR=vim
+
+# Place any env variables that the public one depends on.
+source $PRIV_DOTFILES/init-vars.zsh
+source $PRIV_DOTFILES/personal-aliases.zsh
 
 # Add zsh-completions to fpath. See https://github.com/zsh-users/zsh-completions
 # This only works if near the top for some reason, maybe it has to do with
 # coming before oh-my-zsh.
 fpath=(/usr/local/share/zsh-completions $fpath)
-fpath=(~/dev/scripts $fpath) # this loads _hub autocompletions
-
-# Path to your oh-my-zsh installation.
-export ZSH=/Users/Rob/.oh-my-zsh
+fpath=($SCRIPTS $fpath) # this loads _hub autocompletions
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -91,8 +96,8 @@ export LANG=en_US.UTF-8
 #      libraries it implements.
 
 # Source dotfiles/scripts
-source ~/dev/scripts/.aliases
-source ~/dev/scripts/.extra
+# source ~/dev/scripts/.aliases
+# source ~/dev/scripts/.extra
 
 # Allows using 'git' to access hub functionality
 eval "$(hub alias -s)"

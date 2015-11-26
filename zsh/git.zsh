@@ -1,11 +1,21 @@
-alias gpthis='git push origin HEAD:$(git_current_branch) && git branch -u origin/$(git_current_branch) $(git_current_branch) && echo "pushed current branch and set upstream to origin"'
-alias gh='git log --name-status -n'
+alias gpthis='git push origin $(git_current_branch) -u'
 alias gcom='gco master'
-alias hb='hub browse'
+
+alias gs="git status"
+alias gitpurge="git checkout master && git remote update --prune | git branch -r --merged | grep -v master | sed -e 's/origin\//:/' | xargs git push origin"
+alias branches="git branch -vv"
+
+alias log="git log --pretty=format:'%C(auto)%h - %C(yellow)(%cr)%Creset %s <%an> %C(auto)%d' --graph"
+alias hist="git log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short"
+alias lg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+
 
 # Override the default zsh one: https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/git/git.plugin.zsh
 # so that --no-ff
 alias gm='git merge --no-ff'
+
+# gitignore.io API
+function gi() { curl -L -s https://www.gitignore.io/api/\$@ ;}
 
 alias git-diff-master-develop='git log --left-right --graph --cherry-pick master..develop'
 
@@ -13,8 +23,6 @@ alias git-diff-master-develop='git log --left-right --graph --cherry-pick master
 alias git-cleanup-merged-branches='git branch --merged master | grep -v master | xargs git branch -d'
 
 alias git-cleanup-origin='git remote prune origin'
-
-alias git-cleanup-octopress-merged-branches='git branch --merged source | grep -v source | grep -v master | xargs git branch -d'
 
 git-branch-current() {
     printf "%s\n" $(git branch 2> /dev/null | grep -e ^* | tr -d "\* ")
@@ -45,4 +53,13 @@ git-list-remote-branches-to-remove-do-it() {
 git-file-diffs() {
     git log -p $@
 }
+
+# Git Overrides
+# Just pushes current branch instead of all branches
+git config --global push.default simple
+# Default for new branches is to fetch then rebase on pull (instead of merge)
+git config --global pull.rebase true
+# Records all fixes to merge conflicts and reuses them automatically
+# if the same conflict recurs
+git config --global rerere.enabled true
 

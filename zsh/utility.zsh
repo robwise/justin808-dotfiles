@@ -1,13 +1,26 @@
 # Generic Utilities
 
+# Change working directory to the top-most Finder window location
+function cdf() { # short for `cdfinder`
+    cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')";
+}
+
+# Clean up LaunchServices to remove duplicates in the “Open With” menu
+alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
+
+# Recursively delete `.DS_Store` files
+alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+
+# Empty the Trash on all mounted volumes and the main HDD
+# Also, clear Apple’s System Logs to improve shell startup speed
+alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
+
 funcs() {
     # The functions are stored in an associative array functions, so to get only the
     # funtion names (k flag for keys) in alphabetical order (o flag for ordering)
-
     # then use which <func_name> to see the definition of that function
     print -l ${(ok)functions}
 }
-
 
 tz_pst() {
   tz=`sudo systemsetup -gettimezone`
@@ -34,11 +47,6 @@ using_port() {
   ps -p $(lsof -i:$1 -Fp | cut -c 2-)
 }
 
-# most_used for zsh not working
-# most_used() {
-#   history | awk '{a[$4]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -20
-# }
-
 log()
 {
  echo "[$(date)] $*"
@@ -57,12 +65,10 @@ sanitize() {
   echo $1 | tr ":  /."  "-" | tr -d ",'\""
 }
 
-
 # history grep tail
 hgt() {
   fc -l 1 | grep -i --color=auto $1 | tail -n 40
 }
-
 
 marked() {
   if [[ -f $1 ]]; then
@@ -91,4 +97,3 @@ gup-dotfiles() {
     gup
     popd
 }
-
