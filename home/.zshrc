@@ -9,6 +9,8 @@ export EDITOR=vim
 source $PRIV_DOTFILES/init-vars.zsh
 source $PRIV_DOTFILES/personal-aliases.zsh
 
+source $PUB_DOTFILES/init.zsh
+
 # Add zsh-completions to fpath. See https://github.com/zsh-users/zsh-completions
 # This only works if near the top for some reason, maybe it has to do with
 # coming before oh-my-zsh.

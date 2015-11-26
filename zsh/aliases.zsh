@@ -8,6 +8,7 @@ alias t='tail'
 alias tmuxp="tmux -S /var/tmux/1"
 alias tp='export TOP=`pwd`'
 alias ohmyzsh="subl ~/.oh-my-zsh"
+alias dotfilesdir="cd ${PUB_DOTFILES}"
 
 # allows using like "$ t unicorn.png"
 # see https://github.com/sindresorhus/trash
@@ -96,4 +97,3 @@ alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v exten
 
 # Reload the shell (i.e. invoke as a login shell).
 alias reload="exec $SHELL -l"
-
