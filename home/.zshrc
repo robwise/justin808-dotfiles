@@ -1,6 +1,7 @@
 export PUB_DOTFILES=$HOME/CloudStation/dotfiles/justin808-dotfiles/zsh
 export PRIV_DOTFILES=$HOME/CloudStation/dotfiles/private-dotfiles
 export SCRIPTS=$HOME/CloudStation/dotfiles/justin808-dotfiles/scripts
+export DOTFILES=$HOME/CloudStation/dotfiles
 export ZSH_CUSTOM=$PUB_DOTFILES/zsh/oh-my-zsh-custom
 export ZSH=$HOME/.oh-my-zsh
 export EDITOR=vim

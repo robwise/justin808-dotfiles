@@ -1,5 +1,4 @@
 alias check_vbox='ps -eaf | grep VB*'
-alias g='grep -i --color=auto'
 alias h='history'
 alias kill_postgres_connections='ps xa | grep postgres: | grep bpos | grep -v grep | awk "{print $1}" | sudo xargs kill'
 alias les='less -XFRf'
@@ -9,6 +8,9 @@ alias tmuxp="tmux -S /var/tmux/1"
 alias tp='export TOP=`pwd`'
 alias ohmyzsh="subl ~/.oh-my-zsh"
 alias dotfilesdir="cd ${PUB_DOTFILES}"
+alias dotfiles="subl ${PUB_DOTFILES}/.."
+alias stowdot="cd ${PUB_DOTFILES}/.. && stow -t ~/ -v home"
+alias scmcom="cat ${DOTFILES}/justin808-dotfiles/home/.git.scmbrc"
 
 # allows using like "$ t unicorn.png"
 # see https://github.com/sindresorhus/trash
@@ -45,7 +47,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias echopath='echo $PATH | tr : "\n"'
 
 # Updates pretty much everything
-alias update_all='sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; upgrade_oh_my_zsh'
+alias update_all='sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; upgrade_oh_my_zsh; update_scm_breeze'
 
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
@@ -61,9 +63,6 @@ alias gd="cd ~/Google\ Drive"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias dev="cd ~/dev"
-alias g="git"
-alias h="history"
-alias j="jobs"
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
