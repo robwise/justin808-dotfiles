@@ -1,7 +1,6 @@
 alias gpthis='git push origin $(git_current_branch) -u'
 alias gcom='gco master'
 
-alias gs="git status"
 alias gitpurge="git checkout master && git remote update --prune | git branch -r --merged | grep -v master | sed -e 's/origin\//:/' | xargs git push origin"
 alias branches="git branch -vv"
 
