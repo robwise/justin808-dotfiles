@@ -10,7 +10,6 @@
 .DS_Store
 *conflicted\ copy*
 *.elc
-.ruby-version
 .ruby-gemset
 coverage
 vendor/bundle
