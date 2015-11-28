@@ -47,7 +47,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias echopath='echo $PATH | tr : "\n"'
 
 # Updates pretty much everything
-alias update_all='sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; upgrade_oh_my_zsh; update_scm_breeze'
+alias update_all='sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; npm install npm -g; npm update -g; rbenv update; sudo gem update --system; sudo gem update; upgrade_oh_my_zsh; update_scm_breeze'
 
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."

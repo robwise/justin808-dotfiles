@@ -1,6 +1,5 @@
 export PATH=$PATH:"$HOME/.rbenv/bin"
 export PATH=$PATH:"$HOME/.rbenv/shims"
-export PATH=$PATH:"/usr/local/lib/node_modules"
 export PATH=$PATH:"/usr/local/bin"
 export PATH=$PATH:"/usr/local/sbin"
 export PATH=$PATH:"/usr/bin"
@@ -14,3 +13,6 @@ export PATH=$PATH:"/usr/local/Cellar/qt5/5.3.1/bin"
 # https://github.com/sstephenson/rbenv#basic-github-checkout
 # Must go in this file so that SublimeLinter can see it.
 eval "$(rbenv init - zsh)"
+
+export NVM_DIR="/Users/Rob/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
